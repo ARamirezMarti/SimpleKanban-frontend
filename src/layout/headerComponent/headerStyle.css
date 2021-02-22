@@ -1,0 +1,49 @@
+*{
+    margin: 0px auto;
+    font-family:  'Gill Sans MT';
+    
+}
+
+.headerComponent{
+    color: rgba(255, 255, 255, 0.815);
+    height: 40px;
+    background-color: #162B32;
+
+
+}
+.header{
+    width: 300px;   
+    float: left;    
+}
+.header h1{
+    margin-bottom: 1%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 7%;
+}
+.menu{
+    margin-top: 2%;
+    display: inline;
+    float: right;
+    margin-right: 2%;
+ 
+}
+.menu li,button{
+    position: relative;
+
+    margin-left:10px;
+    display: inline-block;
+   
+}
+.headerButton{
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+    font-size: 13px;
+    outline: none;
+
+}
+.headerButton:hover{
+    color: black;
+}

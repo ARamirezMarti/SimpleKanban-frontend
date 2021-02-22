@@ -1,0 +1,124 @@
+*{
+    margin: 0px auto;
+    font-family: monospace;
+        
+}
+
+.columnframe{    
+    max-width:24% ;
+    margin-top: 1%;
+    margin-left: 1%;
+    float: left;
+    height: 800px ;
+    border: 1px solid rgba(128, 128, 128, 0.938);
+    
+}
+.columnframe:hover{
+    border:1px solid black;
+}
+.columnHeader{
+    margin-top: 1%;
+    border-bottom: 1px solid black;    
+    height: 5%;
+}
+.columnHeader h1{
+    width: 85%;
+    height: 90%;    
+    float: left;
+    font-size: 25px;
+    text-align: center;
+    font-family:  monospace;
+}
+.columnHeader button{
+    width: 10%;
+    height: 50%;
+    float: left;
+    background-color: white;
+    border:none;        
+    text-decoration: none;
+
+
+}
+
+.task{
+    margin-top: 10px;
+    margin: 2% 2% 2% 2%;
+    width: 95%;
+    overflow:hidden;
+    border-radius: 15%;
+    font-size: 15px;
+    
+}
+
+  
+.task button{
+    width: 8%;
+    box-shadow: 5px 5px 5px rgba(27, 27, 27, 0.123);
+    cursor: pointer;
+    background-color: transparent;
+    border:none;        
+    text-decoration: none;
+    padding-top: 10px;
+
+}
+.task h3{
+    width: 80%;
+    padding-top: 10px;
+    text-align: center;
+    margin-bottom: 2%;
+}
+.task h4{
+    margin-left:10px ;  
+}
+.task p{
+    margin-top: 5px;
+    margin-left: 10px;
+    padding-bottom: 15px;
+
+}
+.taskform{
+    padding-top: 4%;
+    padding-left: 4%;
+    width: 200px;
+    border: 3px solid black;
+    background-color: #7b86e6;
+    position: absolute;
+    border-radius: 5%;
+}
+.taskform h3{
+    text-align: center;
+}
+.taskform input,textarea{
+    background-color: transparent;
+    border: 1px solid black;
+    margin-bottom: 10px;
+
+}
+.taskform label{
+    margin-bottom: 25%;
+}
+
+.taskform button{
+    border: none;
+    background-color: transparent;
+    margin-bottom: 2%;
+    width: 80%;
+    font-size: 18px;
+    border-bottom: 0.5px solid black;
+}.taskform button:hover{
+    cursor: pointer;
+}
+
+#changeButton{
+    width: 25px;
+    float: right;
+    margin-right: 5%;
+    
+}
+#changeButton img{
+    width: 15px;
+    height: 15px;
+    
+    
+}
+

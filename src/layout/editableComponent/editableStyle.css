@@ -1,0 +1,42 @@
+.editableFrame{
+    background-color:#FF4838;
+    width: 100%;
+    color: white;
+    float: left;
+    height: 300px;
+   border-bottom-right-radius: 33%;
+   box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.308);
+
+    
+}
+.formframe{
+    margin-top: 5%;
+    width: 85%;
+    
+}
+.formframe input,button,label,select{
+    margin-top: 10px;
+
+}
+.formframe button{
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+    margin-left: 10%;
+}
+.formframe button:hover{
+    background-color: #1f1e1e;
+    border-radius: 50%;
+}
+
+#createForm button{
+    margin-left:30%;
+}
+
+#deleteform select{
+    margin-left:30%;
+    font-size: 16px;
+}
+
