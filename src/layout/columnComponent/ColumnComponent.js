@@ -37,7 +37,6 @@ function ColumnComponent(props) {
     
     
     function createTask(new_task){
-            
       props.settaskList([ ...props.taskList,new_task]);   
     }
 
@@ -88,10 +87,6 @@ function ColumnComponent(props) {
 
     }
     
-    
- 
-    
-
   return (
     <div >
       <div className="columnframe" style={size}>
@@ -163,11 +158,6 @@ function ColumnComponent(props) {
 
         }
 
-         
-        
-
-
-          
         })
       }
       </div>

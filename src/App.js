@@ -17,9 +17,6 @@ function App() {
   
   const [taskList,settaskList] =useState([]);
 
-
-
-  
   return (    
     <div>
       <HeaderComponent />
