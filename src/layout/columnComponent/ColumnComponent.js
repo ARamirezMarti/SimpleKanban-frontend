@@ -72,20 +72,7 @@ function ColumnComponent(props) {
     },[props.size]);
 
 
-    // probando con el drag and drop ver youutube
-
-    // por ahora solo coge el id
-    const drop= (e)=>{
-      e.preventDefault();
-      console.log(e.dataTransfer.getData('id'))
-      
-    }
-    const start=(e)=>{
-      e.preventDefault();
-      e.dataTransfer.setData('id',e.target.id)
-      console.log(e.dataTransfer.getData('id'))
-
-    }
+    
     
   return (
     <div >

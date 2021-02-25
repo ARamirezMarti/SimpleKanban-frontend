@@ -1,10 +1,13 @@
 import './editableStyle.css';
 import {  useEffect, useState } from 'react';
+import EditableLabel from 'react-inline-editing';
+
 
 function EditableComponent(props) {
   const [maxMessage,SetMaxMessage]=useState();
   const [selectList,SetSelectList]=useState([]);
-
+  const [getIndex,setUpdateIndex]=useState([]);
+  
 
   const handlesubmit =(event )=>{
   event.preventDefault();
@@ -21,16 +24,22 @@ function EditableComponent(props) {
  
 
   const handleDelete=(event)=>{
-    // Esto si que borra del array el item     
-
     var indice = selectList.indexOf(event.target.value);
     props.columnTitle.splice(indice,1);
     selectList.splice(indice,1);
     props.setColumnTitle([...props.columnTitle]);
     SetSelectList([...selectList])
 
-    
-     
+  }
+
+  const getindex = (event)=>{
+    setUpdateIndex(props.columnTitle.indexOf(event));
+  }
+
+  const handleupdate = (event)=>{
+    props.columnTitle[getIndex]=event;
+    props.setColumnTitle([...props.columnTitle]);
+    props.setColumnTitle([...props.columnTitle]);
   }
  
  return (
@@ -52,15 +61,41 @@ function EditableComponent(props) {
 
         <div className="formframe ">
          
-          <h3>Edit Column</h3>
+          <h3>Change Column name</h3>
           <hr></hr>
-          
-          <button>hola</button>
-          <button>hola</button>
+          <hr></hr>
+          <div className="updateform">
+          {
+            selectList.map((item,index)=>{
+                 return( 
+                  <EditableLabel className="editable"
+                    text={item} 
+                    key={index}
+                    inputWidth='50px'
+                    inputHeight='10px'
+                    inputMaxLength='25'
+                    labelFontWeight='bold'
+                    inputFontWeight='bold'
+                    labelClassName='editableLabel'
+                    inputClassName='editableInput'
+                    onFocus={getindex}
+                    onFocusOut={handleupdate}
+                    >
 
-          <button>hola</button>
+
+
+                    </EditableLabel>
+                  
+                   
+                )
+              })
+
+            
+          }
+          </div>
+     
         </div>
-
+          <br></br>
         <div className="formframe " id="deleteform">
 
           <h3>Delete Column</h3>

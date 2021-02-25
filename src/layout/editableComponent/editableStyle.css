@@ -40,3 +40,24 @@
     font-size: 16px;
 }
 
+.editableInput{
+    margin-left: 5%;
+    background-color: #FF4838;
+    color: white;
+    float: left;
+  
+
+}
+.editableLabel{
+    margin-left: 11%;
+    float: left;
+    
+
+}
+
+.updateform{
+    width: 100%;
+    display: inline-block;
+}
+
+
