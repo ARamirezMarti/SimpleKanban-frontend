@@ -1,5 +1,5 @@
 import './editableStyle.css';
-import {  useEffect, useState } from 'react';
+import {useState } from 'react';
 import EditableLabel from 'react-inline-editing';
 
 

@@ -7,14 +7,7 @@ import cross from '../../assets/delete.png'
 
 
 import React, { useState, useEffect } from 'react';
-import task from "../../models/task"
-
-/* TODO: 
-      - change margins colums depending on how many columns
-      - Column title se cambiar en la creacion de la columna 
-*/
-
-
+import task from "../../models/task";
 
 function ColumnComponent(props) {
     const [showTaskForm,setTaskForm] =useState(false);
@@ -72,8 +65,6 @@ function ColumnComponent(props) {
     },[props.size]);
 
 
-    
-    
   return (
     <div >
       <div className="columnframe" style={size}>
@@ -123,8 +114,7 @@ function ColumnComponent(props) {
 
               <div className="task" key={index} id={item.column_id} style={{ backgroundColor:item.color}} 
                 draggable="true" 
-            onDragStart={start}
-            onDragEnd={drop}
+        
             
               >
               
