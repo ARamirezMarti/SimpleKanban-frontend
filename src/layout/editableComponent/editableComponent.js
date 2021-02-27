@@ -24,21 +24,24 @@ function EditableComponent(props) {
  
 
   const handleDelete=(event)=>{
-    var indice = selectList.indexOf(event.target.value);
-    props.columnTitle.splice(indice,1);
-    selectList.splice(indice,1);
+    var index = selectList.indexOf(event.target.value);
+    props.columnTitle.splice(index,1);
     props.setColumnTitle([...props.columnTitle]);
-    SetSelectList([...selectList])
+    SetSelectList([...props.columnTitle]);
+   /*  selectList.splice(index,1);
+    SetSelectList([...selectList]) */
 
   }
 
   const getindex = (event)=>{
+    console.log("evento",event);
     setUpdateIndex(props.columnTitle.indexOf(event));
+    console.log(getIndex);
   }
 
   const handleupdate = (event)=>{
+    
     props.columnTitle[getIndex]=event;
-    props.setColumnTitle([...props.columnTitle]);
     props.setColumnTitle([...props.columnTitle]);
   }
  
@@ -62,7 +65,6 @@ function EditableComponent(props) {
         <div className="formframe ">
          
           <h3>Change Column name</h3>
-          <hr></hr>
           <hr></hr>
           <div className="updateform">
           {
@@ -95,21 +97,23 @@ function EditableComponent(props) {
           </div>
      
         </div>
-          <br></br>
+
         <div className="formframe " id="deleteform">
 
           <h3>Delete Column</h3>
           <hr></hr>
-          <select onChange={handleDelete} placeholder="Tables"> Elige tabla
-
+          <div>
+          <select onChange={handleDelete} >
+              <option>Select a column to delete</option>
               {selectList.map((item,index)=>{
                  return( 
 
                    <option value={item} key={index}>{item}</option>)
               })}
-
+          
             
           </select>
+          </div>
         </div>         
         </div>
     </div>

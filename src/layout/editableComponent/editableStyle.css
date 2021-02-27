@@ -1,6 +1,7 @@
 .editableFrame{
     background-color:#FF4838;
     width: 100%;
+    max-width:100%;
     color: white;
     float: left;
     height: 300px;
@@ -32,13 +33,13 @@
 }
 
 #createForm button{
-    margin-left:30%;
+    margin-left:10px;
+}
+#createForm input{
+    width: 100px;
 }
 
-#deleteform select{
-    margin-left:30%;
-    font-size: 16px;
-}
+
 
 .editableInput{
     margin-left: 5%;
@@ -49,7 +50,7 @@
 
 }
 .editableLabel{
-    margin-left: 11%;
+    margin-right: 10%;
     float: left;
     
 

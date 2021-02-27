@@ -16,17 +16,16 @@ function App() {
   const editableNotDisplayed= {display:'block'};
   
   const [taskList,settaskList] =useState([]);
-
   return (    
     <div>
       <HeaderComponent />
       <div className="editable" style={showEditable ? editableDisplayed:editableNotDisplayed}>
         <EditableComponent 
         setColumnTitle={setColumnTitle} 
-        columnTitle={columnTitle} /
-        
-        >
+        columnTitle={columnTitle} 
+        />
       </div>
+
       <div id="divButton">
         <button id="displayButton" onClick={()=>{if(showEditable===false){SetEditable(true)}else{SetEditable(false)}}}> Create Column</button>
       </div>
