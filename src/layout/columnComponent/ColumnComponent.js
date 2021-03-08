@@ -1,41 +1,62 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './columnStyle.css';
 import Draggable from 'react-draggable';
 import { BlockPicker } from 'react-color';
 import rightarrow from '../../assets/rightArrow.png'
 import leftarrow from '../../assets/leftArrow.png'
 import cross from '../../assets/delete.png'
-
+import taskRequest from '../../api/taskRequest';
 
 import React, { useState, useEffect } from 'react';
 import task from "../../models/task";
+
+/* TODO:
+Crear en el modelo column_title tanto front como back y que ademas de distribuir por el column id, distribuya por nombre de la columna cada tarea
+Al hacer esto el cambiar el column_id para mover de columna tendra que cambiar ya que no solo dependera del column_id */
 
 function ColumnComponent(props) {
     const [showTaskForm,setTaskForm] =useState(false);
     const [color,setColor] =useState('0000');
     const [size,setSize]=useState({minWidth:'24%',marginLeft:'1%'});
+    const [requestedData,setRequestedData]= useState([]);
+    const [message,setMessage]= useState('');
+
     
-    const handlesubmit =(event )=>{
+
+    const handlesubmit =  async (event )=>{
       event.preventDefault();
 
       var new_task =new task(
-        Math.max(props.data.index),
+        Math.max(props.data.index), 
         event.target.title.value,
         event.target.description.value,
         event.target.person.value,
         color
         );
-      createTask(new_task);
+
+     let response= await taskRequest.addtask(new_task);
+      if(response.ok){
+       createTask(new_task);
+      }
       document.getElementById('tf').reset();
-     }
+    }
     
-    
-    function createTask(new_task){
-      props.settaskList([ ...props.taskList,new_task]);   
+    const createTask = (new_task)=> {
+      setRequestedData([ ...requestedData,new_task]);
+    }
+    const getdata = async ()=>{
+      const data = await taskRequest.getalldata();
+        setRequestedData(data.tasks)
     }
 
-    function deleteTask(indice){
-      props.taskList.splice(indice,1);
-      props.settaskList([...props.taskList]);
+    async function deleteTask(indice){
+      /* props.taskList.splice(indice,1);
+      props.settaskList([...props.taskList]); */
+
+      // TODO: primer delete devuelve siempre false, necesita dos clicks para borrar el primero.
+     const response = await taskRequest.deletetask(indice);
+       //console.log(response);
+       await getdata();
 
     }      
 
@@ -55,8 +76,9 @@ function ColumnComponent(props) {
       props.settaskList([...props.taskList])
     }
 
-
-    useEffect(()=>{
+   
+    useEffect(async ()=>{
+       getdata();
       if(props.size){
         setSize({minWidth:'28%',marginLeft:'3%'});
       }else{
@@ -72,6 +94,7 @@ function ColumnComponent(props) {
         <div className="columnHeader">
        
             <h1 >{props.title}</h1>
+            <span>{message}</span>
             
             <button onClick={()=>{ setTaskForm(!showTaskForm)}} value="+"> +</button>
           
@@ -105,21 +128,23 @@ function ColumnComponent(props) {
         </Draggable>
       
       {
-        props.taskList.map((item,index)=>{
+        requestedData.map((item,index)=>{
           
 
-          if(props.id === item.column_id){
-
+          if(props.id === parseInt( item.column_id) ){
           return(
 
-              <div className="task" key={index} id={item.column_id} style={{ backgroundColor:item.color}} 
+              <div className="task" 
+                key={item._id} 
+                id={item.column_id} 
+                style={{ backgroundColor:item.color}} 
                 draggable="true" 
         
             
               >
               
 
-              <button onClick={()=>{deleteTask(index)}} > <img width='10' height='10' src={cross}></img></button>
+              <button onClick={()=>{deleteTask(item._id)}} > <img width='10' height='10' src={cross}></img></button>
 
               <button onClick={()=>{goForward(index)}} id="changeButton" ><img  src={rightarrow}></img></button>
               <button onClick={()=>{goBackward(index)}} id="changeButton" ><img src={leftarrow}></img></button>
@@ -132,6 +157,7 @@ function ColumnComponent(props) {
             </div>  
           
           )
+
 
         }
 
