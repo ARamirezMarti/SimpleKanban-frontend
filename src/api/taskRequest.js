@@ -1,4 +1,4 @@
-const url = 'http://localhost:5555';
+const  url = 'http://localhost:5555';
 
 class taskRequest  {
    
@@ -37,6 +37,32 @@ class taskRequest  {
                 }     
         });
         return response.json();
+
+    }
+
+    static async updateTask(mode,column_id,id,arraycolumns){
+
+        var response;
+        if(mode === 'forward'){
+            column_id=parseInt(column_id)+1;
+        }
+        if(mode === 'backward'){
+            column_id=parseInt(column_id)-1;
+        }
+        var column_title =arraycolumns[column_id];
+        if(column_id>=0 && column_id<3){
+            response = await fetch(`${url}/api/updatetask/${id}`,{
+                method:'PUT',
+                body: JSON.stringify({column_id:column_id,column_title:column_title}),
+                headers:{
+                    'Content-Type': 'application/json'
+                    } 
+            })
+            return response.json();
+        }
+        response={ok:false}
+        
+        return response;
 
     }
 

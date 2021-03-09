@@ -16,7 +16,18 @@ function App() {
 
   const editableDisplayed= {display:'none'};
   const editableNotDisplayed= {display:'block'};
-  const [taskList,settaskList] =useState([]);
+  const [requestedData,setRequestedData]= useState([]);
+
+
+  const getdata = async ()=>{
+    const data = await taskRequest.getalldata();
+      setRequestedData(data.tasks)
+  }
+
+  useEffect(() =>{
+    getdata();
+ 
+ },[]);
 
   return (    
     <div>
@@ -41,10 +52,12 @@ function App() {
          key={index}
          title={item }
          data={columnData} 
-         id={index}  
+         id={index}
+         columns={columnTitle} 
          size={showEditable}
-         taskList={taskList}
-         settaskList={settaskList}
+         getdata={getdata}
+         requestedData={requestedData}
+         setRequestedData={setRequestedData}
          >
 
          </ColumnComponent>

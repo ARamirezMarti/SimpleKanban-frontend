@@ -119,6 +119,10 @@
     width: 15px;
     height: 15px;
     
-    
+}
+.span_alert{
+    text-align: center;
+    font-size: 15px;
+    color: red;
 }
 
